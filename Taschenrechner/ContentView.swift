@@ -219,16 +219,16 @@ struct ContentView: View {
                         ErgebnisCheck()
                         AnzeigeReset()
                         if Operator == 1 {
-                            substraction = (Int(Zwischenspeicher) ?? 0)
+                            substraction = substraction + (Int(Zwischenspeicher) ?? 0)
+                            Zwischenspeicher = ""
+                        } else if Operator == 0 {
+                            addition = addition + (Int(Zwischenspeicher) ?? 0)
                             Zwischenspeicher = ""
                         }
-                        addition = addition + (Int(Zwischenspeicher) ?? 0)
-                        Zwischenspeicher = ""
                         Anzeige = Anzeige + " + "
-                        if Anzeige == " + " || Anzeige == " + "{
+                        if Anzeige == " + " || Anzeige == " - "{
                             Anzeige = "0"
                         Operator = 0
-                            
                         }
                     }) {
                         Text("+")
@@ -302,10 +302,12 @@ struct ContentView: View {
                     Button(action: {
                         ErgebnisCheck()
                         AnzeigeReset()
-                        if Operator == 0 {
+                        if Operator == 1 {
+                            substraction = substraction + (Int(Zwischenspeicher) ?? 0)
+                            Zwischenspeicher = ""
+                        } else if Operator == 0 {
                             addition = addition + (Int(Zwischenspeicher) ?? 0)
-                        } else {
-                            substraction = Int(Zwischenspeicher) ?? 0
+                            Zwischenspeicher = ""
                         }
                         Zwischenspeicher = ""
                         Anzeige = Anzeige + " - "
@@ -348,13 +350,13 @@ struct ContentView: View {
                                 ErgebnisCheck()
                                 AnzeigeReset()
                                 if Operator == 1 {
-                                    substraction = substraction + (Int(Zwischenspeicher) ?? 0)
-                                }
-                                if Operator == 0 {
+                                    substraction = substraction +  (Int(Zwischenspeicher) ?? 0)
+                                    Zwischenspeicher = ""
+                                } else if Operator == 0 {
                                     addition = addition + (Int(Zwischenspeicher) ?? 0)
+                                    Zwischenspeicher = ""
                                 }
                                 Ergebnis = addition - substraction
-                                Zwischenspeicher = ""
                                 if History1 == "" && HistoryCount == 0 {
                                     History1 = Anzeige + " = " + String(Ergebnis)
                                     HistoryCount = 1
