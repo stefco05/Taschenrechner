@@ -12,7 +12,6 @@ var Ergebnis = 0
 var Zwischenspeicher:String = ""
 var HistoryCount = 0
 var HistorySize = 0
-let modelName = UIDevice.modelName
 var substraction = 0
 var addition = 0
 var Operator = 0
@@ -380,6 +379,9 @@ struct ContentView: View {
                                 }
                                 Anzeige = String(Ergebnis)
                                 HistoryCount = 0
+                                addition = 0
+                                substraction = 0
+                                Ergebnis = 0
                             }) {
                                 Text("=")
                                     .font(.largeTitle)
